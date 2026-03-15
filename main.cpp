@@ -37,7 +37,7 @@ double lenghtOfCircle (int radius){
 
 void circle () {
     double radius;
-    double sector;
+    int sector;
     cout << "Введите радиус окружности: " << endl;
     if (cin >> radius){
         if (radius <= 0){
@@ -50,8 +50,8 @@ void circle () {
     }
     cout << "Введите угол сектора в градусах: " << endl;
     if (cin >> sector){
-        if (sector <= 0){
-            cout << "Сектор должен быть положительным" << endl;
+        if ((sector <= 0) or (sector > 359)){
+            cout << "Сектор должен быть в промежутке от 1 до 360 градусов" << endl;
             return;
         }
     } else {
