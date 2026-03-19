@@ -1,4 +1,4 @@
-﻿#include <string>
+
 #define _CRT_SECURE_NO_WARNINGS
 #define PI 3.14156265
 #include <locale.h>
@@ -24,6 +24,11 @@ void rectangle() {
     float diagonal = sqrt(a * a + b * b);
     printf("\nПрямоугольник:\nПериметр: %.2f\nПлощадь: %.2f\nДиагональ: %.2f\n", perimeter, area, diagonal);
 }
+void trapezoid() 
+{
+    float a, b, c, d;
+    printf("\nВведите основания и боковые стороны трапеции (a b c d): ");
+    scanf("%f %f %f %f", &a, &b, &c, &d);
 
 double squareOfSectorOfCircle (int radius, int alpha = 360){
     double square = radius * radius * alpha * PI /360;
@@ -64,6 +69,16 @@ void circle () {
     cout << "Длина окружности = " + to_string(lenght_Of_Circle) + "\nПлощадь сектора (" + to_string(sector) + " градусов) = " + to_string(square_Of_Sector) + "\nПлощадь круга"+to_string(square_Of_Circle) <<endl;
 }   
 
+    if (a <= 0 || b <= 0 || c <= 0 || d <= 0) 
+    {
+        printf("\nОшибка: стороны должны быть положительными!\n");
+        return;
+    }
+
+    float perimeter = a + b + c + d;
+    float midLine = (a + b) / 2;
+    printf("\nТрапеция:\nПериметр: %.2f\nСредняя линия: %.2f\n", perimeter, midLine);
+}
 int main() {
     setlocale(LC_ALL, "");
     int choice;
