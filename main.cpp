@@ -2,7 +2,9 @@
 #include <locale.h>
 #include <stdio.h>
 #include <math.h>
-
+#include <iostream>
+#define PI 3.14159265
+using namespace std;
 
 void rectangle() {
     float a, b;
@@ -50,34 +52,75 @@ void triangle()
         printf("\nОшибка: стороны треугольника должны быть >= 0!!\n");
         return;
     }
-if (a + b <= c || a + c <= b || b + c <= a){}
-{
-printf("Ошибка: треугольника с такими сторонами не бывает!!!");
-return;
-}
-float perimeter = a+b+c;
-float semiperimeter = perimeter/2;
-float area = sqrt(semiperimeter * (semiperimeter - a) * (semiperimeter - b) * (semiperimeter - c));
+    if (a + b <= c || a + c <= b || b + c <= a){}
+    {
+    printf("Ошибка: треугольника с такими сторонами не бывает!!!");
+    return;
+    }
+    float perimeter = a+b+c;
+    float semiperimeter = perimeter/2;
+    float area = sqrt(semiperimeter * (semiperimeter - a) * (semiperimeter - b) * (semiperimeter - c));
 
-int rb = 0;
-if (a==b || a==c || b==c)
-{
-    rb = 1;
+    int rb = 0;
+    if (a==b || a==c || b==c)
+    {
+        rb = 1;
+    }
+
+    printf("\n Треугольник\n");
+    printf("Периметр: %.2f:\n", perimeter);
+    printf("Площадь (по формуле Герона): %2.f\n", area);
+    if (rb)
+    {
+        printf("Треугольник равнобедренный.\n");
+        
+    }
+    else 
+    {
+        printf("Треугольник не равнобедренный");
+    }
 }
 
-printf("\n Треугольник\n");
-printf("Периметр: %.2f:\n", perimeter);
-printf("Площадь (по формуле Герона): %2.f\n", area);
-if (rb)
-{
-    printf("Треугольник равнобедренный.\n");
-    
+
+double squareOfSectorOfCircle (int radius, int alpha = 360){
+    double square = radius * radius * alpha * PI /360;
+    return square;
 }
-else 
-{
-    printf("Треугольник не равнобедренный");
-}
-}
+
+double lenghtOfCircle (int radius){
+    double len = radius * 2 * PI;
+    return len;
+} 
+
+void circle () {
+    double radius;
+    int sector;
+    cout << "Введите радиус окружности: " << endl;
+    if (cin >> radius){
+        if (radius <= 0){
+            cout << "Радиус должен быть положительным" << endl;
+            return;
+        }
+    } else {
+        cout << "Радиус должен быть числом" << endl;
+        return;
+    }
+    cout << "Введите угол сектора в градусах: " << endl;
+    if (cin >> sector){
+        if ((sector <= 0) or (sector > 359)){
+            cout << "Сектор должен быть в промежутке от 1 до 360 градусов" << endl;
+            return;
+        }
+    } else {
+        cout << "Сектор должен быть числом" << endl;
+        return;
+    }
+    double square_Of_Circle = squareOfSectorOfCircle(radius);
+    double square_Of_Sector = squareOfSectorOfCircle(radius, sector);
+    double lenght_Of_Circle = lenghtOfCircle(radius);
+    cout << "Длина окружности = " <<(lenght_Of_Circle) << "\nПлощадь сектора (" << sector << " градусов) = " << square_Of_Sector << "\nПлощадь круга = " <<square_Of_Circle <<endl;
+}   
+
 
 int main() {
     setlocale(LC_ALL, "");
@@ -91,28 +134,27 @@ int main() {
         printf("4. Круг\n");
         printf("0. Выход\n");
         printf("Ваш выбор: ");
-        scanf("%d", &choice);
-
-        switch (choice) {
-        case 1:
-            rectangle();
-            break;
-        case 2:
-            triangle();
-            break;
-        case 3:
-            trapezoid();
-            break;
-        case 4:
-            circle();
-            break;
-        case 0:
-            printf("Выход из программы.\n");
-            break;
-        default:
-            printf("Неверный выбор. Попробуйте снова.\n");
+        if (cin >> choice){
+            switch (choice) {
+            case 1:
+                rectangle();
+                break;
+            case 2:
+                triangle();
+                break;
+            case 3:
+                trapezoid();
+                break;
+            case 4:
+                circle();
+                break;
+            case 0:
+                printf("Выход из программы.\n");
+                break;
+            default:
+                printf("Неверный выбор. Попробуйте снова.\n");
+            }
         }
     } while (choice != 0);
-
     return 0;
 }
