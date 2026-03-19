@@ -41,8 +41,9 @@ int main() {
     do {
         printf("\n=== Выберите фигуру ===\n");
         printf("1. Прямоугольник\n");
-        printf("2. Трапеция\n");
-        printf("3. Круг\n");
+
+        printf("3. Трапеция\n");
+        printf("4. Круг\n");
         printf("0. Выход\n");
         printf("Ваш выбор: ");
         scanf("%d", &choice);
@@ -52,9 +53,12 @@ int main() {
             rectangle();
             break;
         case 2:
+            triangle();
+            break;
+        case 3:
             trapezoid();
             break;
-	case 3:
+        case 4:
             circle();
             break;
         case 0:
