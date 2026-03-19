@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <locale.h>
 #include <stdio.h>
 #include <math.h>
@@ -118,7 +118,11 @@ void circle () {
     double square_Of_Circle = squareOfSectorOfCircle(radius);
     double square_Of_Sector = squareOfSectorOfCircle(radius, sector);
     double lenght_Of_Circle = lenghtOfCircle(radius);
+<<<<<<< HEAD
     cout << "Длина окружности = " <<(lenght_Of_Circle) << "\nПлощадь сектора (" << sector << " градусов) = " << square_Of_Sector << "\nПлощадь круга = " <<square_Of_Circle <<endl;
+=======
+    cout << "Длина окружности = " << lenght_Of_Circle << "\nПлощадь сектора (" << sector << " градусов) = " << square_Of_Sector << "\nПлощадь круга = " <<square_Of_Circle <<endl;
+>>>>>>> backup-circle
 }   
 
 
