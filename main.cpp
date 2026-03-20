@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <iostream>
+#include <limits>
 #define PI 3.14159265
 using namespace std;
 
@@ -99,30 +100,34 @@ void circle () {
     if (cin >> radius){
         if (radius <= 0){
             cout << "Радиус должен быть положительным" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             return;
         }
     } else {
         cout << "Радиус должен быть числом" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         return;
     }
     cout << "Введите угол сектора в градусах: " << endl;
     if (cin >> sector){
         if ((sector <= 0) or (sector > 359)){
             cout << "Сектор должен быть в промежутке от 1 до 360 градусов" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             return;
         }
     } else {
         cout << "Сектор должен быть числом" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         return;
     }
     double square_Of_Circle = squareOfSectorOfCircle(radius);
     double square_Of_Sector = squareOfSectorOfCircle(radius, sector);
     double lenght_Of_Circle = lenghtOfCircle(radius);
-<<<<<<< HEAD
     cout << "Длина окружности = " <<(lenght_Of_Circle) << "\nПлощадь сектора (" << sector << " градусов) = " << square_Of_Sector << "\nПлощадь круга = " <<square_Of_Circle <<endl;
-=======
-    cout << "Длина окружности = " << lenght_Of_Circle << "\nПлощадь сектора (" << sector << " градусов) = " << square_Of_Sector << "\nПлощадь круга = " <<square_Of_Circle <<endl;
->>>>>>> backup-circle
 }   
 
 
@@ -158,6 +163,10 @@ int main() {
             default:
                 printf("Неверный выбор. Попробуйте снова.\n");
             }
+        } else {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            choice = -1;
         }
     } while (choice != 0);
     return 0;
